@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <title>Page d'accueil</title>
+        <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    </head>
+    <body>
+        <div class="container">
+            <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+            <h2>Page d'accueil non sécurisée</h2>
+
+            <div sec:authorize="isAuthenticated()">
+                <div class="alert alert-success" role="alert">
+                    This content is only shown to authenticated users.
+                </div>
+            </div>
+
+            <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">		
+                Logged in => <span sec:authentication="name"></span>
+                <br/>
+                Roles => <span sec:authentication="principal.authorities"></span>	
+
+                <br/><br/>
+                <div>
+                    <form action="#" th:action="@{/logout}" method="post">					
+                        <input type="submit" value="Logout" class="btn btn-danger"/>
+                    </form>
+                </div>
+            </div>
+
+            <br/><br/>
+
+            <div>
+                Session UID: <span th:text="${session.uid}">session uid</span>
+            </div>
+
+            <br/><br/>
+
+            <div>
+                Request infos:
+                <ul>
+                    <li>Locale: <span th:text="${locale}"></span></li>
+                    <li>URL: <span th:text="${url}"></span></li>
+                    <li>User: <span th:text="${user}"></span></li>
+                    <li>IP: <span th:text="${ip}"></span></li>
+                </ul>
+            </div>
+
+            <h3>Hello Security</h3>
+            <p>This is an unsecured page, but you can access the secured pages after authenticating.</p>
+            <ul>
+                <li>Go to the <a th:href="@{/admin/}">secured</a></li>
+            </ul>
+
+        </div>
+    </body>
+</html>

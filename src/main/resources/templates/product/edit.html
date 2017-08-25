@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Produits : Edition</title>
+        <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    </head>
+    <body>
+        <div class="container">
+            <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+            <h2>Produits : édition</h2>
+
+            <div>
+                <form class="form-horizontal" th:object="${product}" th:action="@{/product}" method="post">
+                    <input type="hidden" th:field="*{id}"/>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" th:field="*{name}"/>
+                            <span style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Price:</label>
+                        <div class="col-sm-10">
+                            <input type="text" th:field="*{price}"/>
+                            <span style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!--<label class="col-sm-2 control-label">Category</label>
+                        <div class="col-sm-10">
+                            <input type="text" th:field="*{category}"/>
+                            <span style="color: red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Category Error</span>
+                        </div>-->
+
+                        <label class="col-sm-2 control-label">Category</label>
+                        <div class="col-sm-10">
+                            <div th:if="${not #lists.isEmpty(allCategories)}">
+                                <select th:field="*{category}">
+                                    <option th:each="category : ${allCategories}" 
+                                            th:value="${category.id}" 
+                                            th:text="${category.name}">azerty</option>
+                                </select>
+                            </div>
+                            <span style="color: red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Category Error</span>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </body>
+</html>

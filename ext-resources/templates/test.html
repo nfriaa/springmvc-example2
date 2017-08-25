@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html 
+    xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <title>Page d'accueil</title>
+        <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    </head>
+    <body>
+        <div class="container">
+            <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+            <h2>test.html (hors jar) 2</h2>
+
+            <div sec:authorize="isAuthenticated()">
+                <code>This content is only shown to authenticated users.</code>
+            </div>
+
+            <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">		
+                Logged in => <span sec:authentication="name"></span>
+                <br/>
+                Roles => <span sec:authentication="principal.authorities"></span>	
+                
+                <br/><br/>
+                <div>
+                    <form action="#" th:action="@{/logout}" method="post">					
+                        <input type="submit" value="Logout" class="btn btn-danger"/>
+                    </form>
+                </div>
+            </div>
+            
+            <br/><br/>
+            
+            <h3>Hello Security</h3>
+            <p>This is an unsecured page, but you can access the secured pages after authenticating.</p>
+            <ul>
+                <li>Go to the <a th:href="@{/admin/}">secured</a></li>
+            </ul>
+
+        </div>
+    </body>
+</html>

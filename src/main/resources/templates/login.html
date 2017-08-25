@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Page d'authentification</title>
+        <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+
+        <link href="../static/css/signin.css" 
+              th:href="@{/css/signin.css}" 
+              rel="stylesheet" 
+              media="screen"/>
+
+    </head>
+    <body>
+        
+        <div class="container">
+
+            <form class="form-signin" th:action="@{/login}" method="post">
+                
+                <div class="alert alert-danger alert-dismissible" role="alert" th:if="${param.error}">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    Invalid username and password.
+                </div>
+
+                <div class="alert alert-info alert-dismissible" role="alert" th:if="${param.logout}">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    You have been logged out.
+                </div>
+
+                <center><img src="../static/images/logo.png" th:src="@{/images/logo.png}" width="100px"/></center>
+                
+                <h2 class="form-signin-heading">Please sign in</h2>
+
+                <label for="username" class="sr-only">Username</label>
+                <input id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="" type="text"/>
+
+                <label for="password" class="sr-only">Password</label>
+                <input id="password" name="password" class="form-control" placeholder="Password" required="" type="password"/>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+            
+            <em>Login: demo / Password: demo (simple role)</em>
+            <br/>
+            <em>Login: admin / Password: admin (admin role)</em>
+
+        </div>
+        
+    </body>
+</html>

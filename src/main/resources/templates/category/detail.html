@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Produits : detail</title>
+        <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+    </head>
+    <body>
+        <div class="container">
+            <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+
+            <h2>Catégorie : détails</h2>
+
+            <div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Category Id:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${category.id}">Category Id</p></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Name:</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static" th:text="${category.name}">name</p>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+
+        </div>
+
+    </body>
+</html>

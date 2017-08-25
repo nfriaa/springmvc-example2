@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+    </head>
+    <body>
+        <div class="container">
+
+            <div th:fragment="header">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <a class="navbar-brand" href="#" th:href="@{/}">
+                            <span class="glyphicon glyphicon-home"></span> Home
+                        </a>
+
+                        <ul class="nav navbar-nav">
+                            <li><a href="#" th:href="@{/hello}">Hello</a></li>
+                            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="#" th:href="@{/categories}">Categories</a></li>
+                            <li><a href="#" th:href="@{/products}">Products</a></li>
+                            <li><a href="#" th:href="@{/admin}">Back-office</a></li>
+                            <li sec:authorize="isAnonymous()"><a href="#" th:href="@{/login}">Login</a></li>
+                        </ul>
+
+                        <a sec:authorize="isAuthenticated()" href="#" th:href="@{/logout}" class="btn btn-default navbar-btn navbar-right" style="margin-right: 2px;">Logout</a>
+
+                        <!--<p class="navbar-text navbar-right" th:inline="text">
+                            Signed in as [[${#httpServletRequest.remoteUser}]] &nbsp;&nbsp;
+                        </p>-->
+
+                        <div sec:authorize="isAuthenticated()">
+                            <p class="navbar-text navbar-right" th:inline="text" style="margin-right: 10px;">
+                                Welcome <span sec:authentication="name"></span>
+                            </p>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+
+
+        </div>
+    </body>
+</html>
