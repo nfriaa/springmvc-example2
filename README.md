@@ -1,7 +1,7 @@
 # springmvc-example2
 Demo project using Spring Boot and CRUD with the SpringMVC framework
 
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/nfriaa/springmvc-example2/issues) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/nfriaa/springmvc-example2) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/nfriaa/springmvc-example2/blob/master/LICENSE)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat)](https://github.com/nfriaa/springmvc-example2/issues) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/nfriaa/springmvc-example2) [![demo jar](https://img.shields.io/badge/demo-jar-yellow.svg?style=flat)](https://github.com/nfriaa/springmvc-example2/tree/master/demo) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/nfriaa/springmvc-example2/blob/master/LICENSE)
 
 ## Description
 Sample application using the framework SpringMVC and packaged in jar executable file with Spring boot
